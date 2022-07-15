@@ -10,6 +10,6 @@ Outlook Passwords
 
 Upload  gate.php  to  web server
 
-Change the web server address in file Stealer.cs
+Change the web server address "http://localhost/gate.php" in file Stealer.cs
 
 
