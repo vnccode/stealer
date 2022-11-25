@@ -18,8 +18,7 @@ namespace StormKitty
         {
             bool createdNew = false;
             Mutex currentApp = new Mutex(false, "mutex1", out createdNew);
-            if (!createdNew)
-                Environment.Exit(1);
+            if (!createdNew) Environment.Exit(1);
         }
 			
 		
