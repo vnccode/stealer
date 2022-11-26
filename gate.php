@@ -33,7 +33,6 @@ if (move_uploaded_file($_FILES['file']['tmp_name'], $uploadfile))
 {
 $arr = explode(".", $uploadfile);
 $id = $arr[0];
-$id = substr($id,0,25); 
 $ip = getMyIP();
 $zip = new ZipArchive(); 
 $zip->open(zipfile, ZIPARCHIVE::CREATE); 
