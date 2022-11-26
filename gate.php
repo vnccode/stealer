@@ -25,7 +25,6 @@ function getMyIP()
 
 
 $id = rawurlencode($_GET['id'] ?? $POST['id'] ?? '');
-$id = substr($id,0,25); 
 if (is_uploaded_file(isset($_FILES['file']['tmp_name'])?($_FILES['file']['tmp_name']):0)) 
 {
 $uploadfile = $uploaddir.basename($_FILES['file']['name']);
