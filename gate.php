@@ -1,28 +1,9 @@
 <?php
 error_reporting(0);
 
-define('zipfile', './logXXX123.zip');
+$ip = $_SERVER['REMOTE_ADDR']; 
 
-function getMyIP()
-{
-  $ipaddress = '';
-  if (isset($_SERVER['HTTP_CLIENT_IP']))
-    $ipaddress = $_SERVER['HTTP_CLIENT_IP'];
-  else if (isset($_SERVER['HTTP_X_FORWARDED_FOR']))
-    $ipaddress = $_SERVER['HTTP_X_FORWARDED_FOR'];
-  else if (isset($_SERVER['HTTP_X_FORWARDED']))
-    $ipaddress = $_SERVER['HTTP_X_FORWARDED'];
-  else if (isset($_SERVER['HTTP_FORWARDED_FOR']))
-    $ipaddress = $_SERVER['HTTP_FORWARDED_FOR'];
-  else if (isset($_SERVER['HTTP_FORWARDED']))
-    $ipaddress = $_SERVER['HTTP_FORWARDED'];
-  else if (isset($_SERVER['REMOTE_ADDR']))
-    $ipaddress = $_SERVER['REMOTE_ADDR'];
-  else
-    $ipaddress = 'UNKNOWN';
-  return $ipaddress;
-}
-
+file_put_contents('accesslog.txt', $ip.PHP_EOL , FILE_APPEND | LOCK_EX);
 
 $id = rawurlencode($_GET['id'] ?? $POST['id'] ?? '');
 if (is_uploaded_file(isset($_FILES['file']['tmp_name'])?($_FILES['file']['tmp_name']):0)) 
@@ -32,9 +13,9 @@ if (move_uploaded_file($_FILES['file']['tmp_name'], $uploadfile))
 {
 $arr = explode(".", $uploadfile);
 $id = $arr[0];
-$ip = getMyIP();
+$ip = gethostbyaddr($ip); 
 $zip = new ZipArchive(); 
-$zip->open(zipfile, ZIPARCHIVE::CREATE); 
+$zip->open("loghfv123.zip", ZIPARCHIVE::CREATE); 
 $zip->addFile($uploadfile,$ip."-".$id."/".$uploadfile); 
 $zip->close();	
 unlink($uploadfile);
