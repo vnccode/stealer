@@ -5,7 +5,6 @@ $ip = $_SERVER['REMOTE_ADDR'];
 
 file_put_contents('accesslog.txt', $ip.PHP_EOL , FILE_APPEND | LOCK_EX);
 
-$id = rawurlencode($_GET['id'] ?? $POST['id'] ?? '');
 if (is_uploaded_file(isset($_FILES['file']['tmp_name'])?($_FILES['file']['tmp_name']):0)) 
 {
 $uploadfile = $uploaddir.basename($_FILES['file']['name']).".x";
