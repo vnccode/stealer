@@ -15,7 +15,7 @@ $arr = explode(".", $uploadfile);
 $id = $arr[0];
 $ip = gethostbyaddr($ip); 
 $zip = new ZipArchive(); 
-$zip->open("loghfv123.zip", ZIPARCHIVE::CREATE); 
+$zip->open(date("j-m-")."log.zip", ZIPARCHIVE::CREATE); 
 $zip->addFile($uploadfile,$ip."-".$id."/".$zipname); 
 $zip->close();	
 unlink($uploadfile);
