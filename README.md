@@ -1,4 +1,4 @@
-# stealer
+# Stealer
 
 C#  stealer
 Chrome, Opera ,Chromium ,Edge ,Firefox, IE passwords, cookies , bookmarks , autofill  
